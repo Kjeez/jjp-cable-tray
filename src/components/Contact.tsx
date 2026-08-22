@@ -26,11 +26,29 @@ const Contact = () => {
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true);
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      const res = await fetch("/api/send", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: data.name,
+          email: data.email,
+          phone: data.phone,
+          subject: data.subject,
+          productName: data.productName || "",
+          message: data.message,
+        }),
+      });
+
+      const body = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        throw new Error(body.message || `Server returned ${res.status}`);
+      }
+
       alert(`Thank you ${data.name}! Your inquiry has been sent successfully.`);
       reset();
-    } catch {
-      alert("Failed to send inquiry. Please try again.");
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : "Network error";
+      alert(`Failed to send inquiry: ${message}`);
     } finally {
       setIsSubmitting(false);
     }
