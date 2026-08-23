@@ -1,6 +1,7 @@
 import nodemailer from "nodemailer";
 
 export const dynamic = "force-dynamic"; // never cache this route
+export const runtime = "nodejs"; // nodemailer requires Node.js runtime
 
 const isValidEmail = (s: string) =>
   typeof s === "string" && /\S+@\S+\.\S+/.test(s);
@@ -68,9 +69,11 @@ export async function POST(request: Request) {
 
     return Response.json({ message: "Email sent successfully!" });
   } catch (err: unknown) {
-    console.error("Email error:", err);
+    const errorMessage =
+      err instanceof Error ? err.message : "Unknown error";
+    console.error("Email error:", errorMessage, err);
     return Response.json(
-      { message: "Failed to send email." },
+      { message: `Failed to send email: ${errorMessage}` },
       { status: 500 }
     );
   }

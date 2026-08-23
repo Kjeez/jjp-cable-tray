@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -12,21 +13,206 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+/* ────────────────────────────────────────────
+   SEO — Metadata
+   ──────────────────────────────────────────── */
 export const metadata: Metadata = {
-  title: "Cable Tray Manufacturer in Delhi NCR | JP Electrical & Controls",
+  metadataBase: new URL("https://jpcabletray.com"),
+
+  title: {
+    default:
+      "Cable Tray Manufacturer in Delhi NCR | JP Electrical & Controls",
+    template: "%s | JP Electrical & Controls",
+  },
+
   description:
-    "Leading cable tray manufacturer and supplier in Delhi NCR. We offer perforated GI cable trays, powder-coated trays, cable ladders, raceways, and GI ladder trays.",
-  keywords:
-    "cable tray, cable tray manufacturer, cable tray supplier, GI cable tray, perforated cable tray, ladder cable tray, raceway, Delhi NCR",
+    "Leading cable tray manufacturer and supplier in Delhi NCR. We offer perforated GI cable trays, powder-coated trays, cable ladders, raceways, and GI ladder trays. ISO 9001:2015 certified.",
+
+  keywords: [
+    "cable tray",
+    "cable tray manufacturer",
+    "cable tray supplier",
+    "GI cable tray",
+    "perforated cable tray",
+    "ladder cable tray",
+    "raceway",
+    "cable tray manufacturer in Delhi NCR",
+    "cable tray manufacturer in India",
+    "GI perforated cable tray",
+    "powder coated cable tray",
+    "hot dip galvanized cable tray",
+    "walkway cable tray",
+    "compartment raceway",
+    "JP Electrical",
+    "cable management",
+    "cable tray Greater Noida",
+    "cable tray Gurugram",
+  ],
+
+  authors: [{ name: "JP Electrical & Controls" }],
+
+  creator: "JP Electrical & Controls",
+
+  publisher: "JP Electrical & Controls",
+
+  robots: {
+    index: true,
+    follow: true,
+    "max-image-preview": "large" as const,
+    "max-snippet": -1,
+    "max-video-preview": -1,
+  },
+
+  alternates: {
+    canonical: "https://jpcabletray.com",
+  },
+
   openGraph: {
+    type: "website",
+    locale: "en_IN",
+    url: "https://jpcabletray.com",
+    siteName: "JP Electrical & Controls – Trusted Cable Tray Manufacturer in India",
+    title: "Cable Tray Manufacturer in Delhi NCR | JP Electrical & Controls",
+    description:
+      "Leading cable tray manufacturer and supplier in Delhi NCR. Perforated GI cable trays, powder-coated trays, cable ladders, raceways, and GI ladder trays.",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "JP Electrical & Controls – Cable Tray Manufacturer",
+      },
+    ],
+  },
+
+  twitter: {
+    card: "summary_large_image",
     title: "Cable Tray Manufacturer in Delhi NCR | JP Electrical & Controls",
     description:
       "Leading cable tray manufacturer and supplier in Delhi NCR. Perforated GI cable trays, powder-coated trays, cable ladders, raceways.",
-    type: "website",
-    url: "https://jpcabletray.com",
+    images: ["/og-image.jpg"],
   },
+
+  verification: {
+    // Add Google Search Console verification if available
+    // google: "your-verification-code",
+  },
+
+  category: "Industrial Manufacturing",
 };
 
+/* ────────────────────────────────────────────
+   JSON-LD Structured Data
+   ──────────────────────────────────────────── */
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://jpcabletray.com/#organization",
+      name: "JP Electrical & Controls",
+      url: "https://jpcabletray.com",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://jpcabletray.com/logo.png",
+      },
+      contactPoint: {
+        "@type": "ContactPoint",
+        telephone: "+91-7836870201",
+        contactType: "sales",
+        areaServed: "IN",
+        availableLanguage: ["English", "Hindi"],
+      },
+      address: {
+        "@type": "PostalAddress",
+        streetAddress:
+          "J-80, Site-C, Surajpur Industrial Area",
+        addressLocality: "Greater Noida",
+        addressRegion: "Uttar Pradesh",
+        postalCode: "201306",
+        addressCountry: "IN",
+      },
+      sameAs: [
+        "https://www.facebook.com/jpelectricalcontrols",
+        "https://www.instagram.com/jpelectricalcontrols",
+      ],
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://jpcabletray.com/#website",
+      url: "https://jpcabletray.com",
+      name: "JP Electrical & Controls – Trusted Cable Tray Manufacturer in India",
+      description: "Expertly Engineered Cable Trays for Every Industry",
+      publisher: { "@id": "https://jpcabletray.com/#organization" },
+      inLanguage: "en-IN",
+      potentialAction: {
+        "@type": "SearchAction",
+        target: {
+          "@type": "EntryPoint",
+          urlTemplate:
+            "https://jpcabletray.com/?s={search_term_string}",
+        },
+        "query-input": {
+          "@type": "PropertyValueSpecification",
+          valueRequired: true,
+          valueName: "search_term_string",
+        },
+      },
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://jpcabletray.com/#webpage",
+      url: "https://jpcabletray.com",
+      name: "Cable Tray Manufacturer in Delhi NCR | JP Electrical & Controls",
+      isPartOf: { "@id": "https://jpcabletray.com/#website" },
+      about: { "@id": "https://jpcabletray.com/#organization" },
+      description:
+        "Leading cable tray manufacturer and supplier in Delhi NCR. We offer perforated GI cable trays, powder-coated trays, cable ladders, raceways, and GI ladder trays.",
+      inLanguage: "en-IN",
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://jpcabletray.com/#localbusiness",
+      name: "JP Electrical & Controls",
+      image: "https://jpcabletray.com/og-image.jpg",
+      url: "https://jpcabletray.com",
+      telephone: "+91-7836870201",
+      email: "sales@jpelectricalcontrols.com",
+      priceRange: "$$",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress:
+          "J-80, Site-C, Surajpur Industrial Area",
+        addressLocality: "Greater Noida",
+        addressRegion: "Uttar Pradesh",
+        postalCode: "201306",
+        addressCountry: "IN",
+      },
+      geo: {
+        "@type": "GeoCoordinates",
+        latitude: 28.5355,
+        longitude: 77.3910,
+      },
+      openingHoursSpecification: {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+        ],
+        opens: "09:00",
+        closes: "18:00",
+      },
+    },
+  ],
+};
+
+/* ────────────────────────────────────────────
+   Layout Component
+   ──────────────────────────────────────────── */
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -38,7 +224,42 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <head>
+        {/* ── Google Tag Manager ── */}
+        <Script
+          id="gtm-script"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+              'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+              })(window,document,'script','dataLayer','GTM-P6VDBRLF');
+            `,
+          }}
+        />
+
+        {/* ── JSON-LD Structured Data ── */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
+
+      <body className="min-h-full flex flex-col">
+        {/* ── GTM noscript fallback ── */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-P6VDBRLF"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          />
+        </noscript>
+
+        {children}
+      </body>
     </html>
   );
 }
