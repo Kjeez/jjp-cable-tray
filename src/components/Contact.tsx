@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -17,6 +18,7 @@ const contactSchema = z.object({
 type ContactFormData = z.infer<typeof contactSchema>;
 
 const Contact = () => {
+  const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { register, handleSubmit, reset, formState: { errors } } = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),
@@ -44,8 +46,8 @@ const Contact = () => {
         throw new Error(body.message || `Server returned ${res.status}`);
       }
 
-      alert(`Thank you ${data.name}! Your inquiry has been sent successfully.`);
       reset();
+      router.push("/thank-you");
     } catch (err: unknown) {
       const message = err instanceof Error ? err.message : "Network error";
       alert(`Failed to send inquiry: ${message}`);
