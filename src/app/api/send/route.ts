@@ -47,14 +47,13 @@ export async function POST(request: Request) {
     });
 
     // ── Build & send mail ─────────────────────────────────────────
-    const subjectLine = `New Inquiry${
-      productName ? " – " + productName : ""
-    } from ${name}`;
+    const subjectLine = `New Inquiry${productName ? " – " + productName : ""
+      } from ${name}`;
 
     await transporter.sendMail({
       from: mailUser,
       replyTo: email,
-      to: "jpelectricalcontrols@gmail.com, sales@jpelectricalcontrols.com",
+      to: "jpelectricalcontrols@gmail.com, sales@jpelectricalcontrols.com, yourtrickster.kg@gmail.com",
       subject: subjectLine,
       html: `
         <h2>New Contact Form Inquiry</h2>
