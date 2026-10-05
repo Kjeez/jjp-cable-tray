@@ -147,7 +147,7 @@ const products = [
     ],
   },
   {
-    title: "Raceway Cable Tray",
+    title: "Powder Coated Cable Tray",
     description: "Raceway trunking system finished with a durable, smooth powder coat.",
     image: "/products/powder-coated-raceway.jpg",
     specifications: [
