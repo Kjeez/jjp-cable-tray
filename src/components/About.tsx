@@ -28,9 +28,9 @@ const About = () => {
             className="space-y-8"
           >
             <div className="space-y-4">
-              <h2 className="text-4xl font-bold text-gray-900">
-                About <span className="text-[#FB923C]">JP Electrical & Controls</span>
-              </h2>
+              <h1 className="text-4xl font-bold text-gray-900">
+                About <span className="text-[#FB923C]">Cable Tray Cable Ladder</span>
+              </h1>
               <p className="text-lg text-gray-600 leading-relaxed">
                 Established in 2011, JP Electrical & Controls is a trusted cable tray manufacturer, cable tray supplier, and exporter specializing in high-quality cable management and electrical solutions. Recognized as a leading cable tray manufacturer in Delhi NCR, we offer a wide product portfolio that includes{" "}
                 <strong>perforated GI cable trays, powder coated cable trays, cable ladder raceways, compartment raceways, and other advanced solutions.</strong>{" "}

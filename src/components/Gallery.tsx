@@ -32,9 +32,9 @@ const Gallery = () => {
   return (
     <section id="gallery" className="py-20 bg-[#EFF6FF]">
       <div className="max-w-7xl mx-auto px-4">
-        <h2 className="text-4xl font-bold mb-12 text-center">
-          Our <span className="text-[#FB923C]">Gallery</span>
-        </h2>
+        <h1 className="text-4xl font-bold mb-12 text-center">
+          Cable Trays <span className="text-[#FB923C]">Gallery</span>
+        </h1>
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}

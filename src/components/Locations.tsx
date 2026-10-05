@@ -3,7 +3,13 @@
 import { motion } from "framer-motion";
 
 const cities = [
-  "Delhi NCR", "Delhi", "Gurugram", "Noida", "Ghaziabad", "Faridabad", "Greater Noida"
+  "Cable Tray Manufacturer in Delhi",
+  "Cable Tray Manufacturer in Gurgaon",
+  "Cable Tray Manufacturer in Noida",
+  "Cable Tray Manufacturer in Delhi NCR",
+  "Cable Tray Manufacturer in Greater Noida",
+  "Cable Tray Manufacturer in Ghaziabad",
+  "Cable Tray Manufacturer in Faridabad"
 ];
 
 const Locations = () => {
@@ -24,7 +30,7 @@ const Locations = () => {
           className="flex flex-wrap justify-center gap-4"
         >
           {cities.map((city, index) => (
-            <motion.div
+            <motion.h1
               variants={{
                 hidden: { opacity: 0, scale: 0.8 },
                 visible: { opacity: 1, scale: 1 }
@@ -33,7 +39,7 @@ const Locations = () => {
               className="bg-white shadow-md rounded-full px-6 py-3 text-lg font-medium text-gray-700 hover:bg-[#EF7F1A] hover:text-white transition-all duration-300 cursor-default"
             >
               {city}
-            </motion.div>
+            </motion.h1>
           ))}
         </motion.div>
       </div>

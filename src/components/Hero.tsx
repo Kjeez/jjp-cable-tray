@@ -28,18 +28,16 @@ const Hero = () => {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="text-3xl lg:text-5xl font-bold leading-tight"
               >
-                JP Electrical & Controls Is a Leading{" "}
-                <span className="text-[#FB923C]">Manufacturer & Supplier</span>{" "}
-                in India.
+                JP Electrical & Controls is a <span className="text-[#FB923C]">Cable Tray Manufacturer</span> in Delhi
               </motion.h1>
-              <motion.p
+              <motion.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
                 className="text-xl text-white/90 leading-relaxed md:pr-40"
               >
-                Cable Trays Manufacturer & Supplier in Delhi NCR
-              </motion.p>
+                Cable Tray Supplier in Delhi
+              </motion.h1>
             </div>
 
             <motion.div

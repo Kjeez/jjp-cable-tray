@@ -77,9 +77,9 @@ const Testimonials = () => {
 
         {/* SEO Content */}
         <div className="w-full text-left bg-white p-8 rounded-lg shadow">
-          <h3 className="text-2xl font-semibold mb-4 text-[#FB923C]">
-            Cable Tray Manufacturers & Suppliers in India
-          </h3>
+          <h1 className="text-2xl font-semibold mb-4 text-[#FB923C]">
+            Cable Tray Manufacturer Near You
+          </h1>
           <p className="text-gray-500 leading-relaxed text-base">
             Are you looking for a reliable cable tray manufacturer in Gurugram, Delhi, Noida, Faridabad, Greater Noida, or Ghaziabad?
             Look no further. JP Electrical & Controls offers high-quality cable tray solutions for efficient cable management in various

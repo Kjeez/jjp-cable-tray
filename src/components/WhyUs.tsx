@@ -10,7 +10,7 @@ const points = [
   { icon: ShieldCheck, title: "Safety", desc: "Engineered with strict ISI/ISO standards to protect users and equipment." },
   { icon: ThumbsUp, title: "Customer Satisfaction", desc: "A commitment to delivering solutions that meet and exceed expectations." },
   { icon: Star, title: "Brand Reputation", desc: "Trusted by clients nationwide for unmatched quality and service." },
-  { icon: BarChart3, title: "Increased Sales", desc: "Our products help businesses boost customer trust and sales." },
+  { icon: BarChart3, title: "Cable Tray Sizing", desc: "Our products help businesses boost customer trust and sales." },
   { icon: Wallet, title: "Reduced Costs", desc: "Durable and efficient solutions that lower maintenance and replacement expenses." },
 ];
 
@@ -43,7 +43,7 @@ const WhyUs = () => {
               <div className="mb-4 flex justify-center">
                 <p.icon className="h-8 w-8 text-[#045AA2]" />
               </div>
-              <h3 className="font-semibold text-lg mb-2">{p.title}</h3>
+              <h1 className="font-semibold text-lg mb-2">{p.title}</h1>
               <p className="text-gray-500 text-sm">{p.desc}</p>
             </motion.div>
           ))}

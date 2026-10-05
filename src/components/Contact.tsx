@@ -60,9 +60,9 @@ const Contact = () => {
     <section id="contact" className="py-20 bg-[#f8fafc]">
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            Get In <span className="text-[#FB923C]">Touch</span>
-          </h2>
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">
+            Contact Us <span className="text-[#FB923C]">Now</span>
+          </h1>
           <p className="text-lg text-gray-500 max-w-2xl mx-auto">
             Ready to discuss your cable tray and raceway requirements? Contact our expert team today.
           </p>

@@ -1,21 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { ArrowRight, Phone, X } from "lucide-react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
+import { useState } from "react";
+import { ArrowRight, Phone } from "lucide-react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
-
-const quoteSchema = z.object({
-  name: z.string().min(2, "Name is required"),
-  phone: z.string().min(6, "Enter a valid phone").max(20).regex(/^[0-9+\s()-]+$/, "Phone can contain digits, spaces and +()-"),
-  email: z.string().email("Enter a valid email"),
-  productName: z.string().optional(),
-  message: z.string().min(1, "Message is required"),
-});
-type QuoteFormData = z.infer<typeof quoteSchema>;
+import { motion } from "framer-motion";
 
 const products = [
   {
@@ -39,7 +27,7 @@ const products = [
     ],
   },
   {
-    title: "Walkway Cable Tray",
+    title: "Perforated Cable Tray",
     description: "Non-slip, durable walkway planks/platforms for safe rooftop and plant access.",
     image: "/products/walkway.jpg",
     specifications: [
@@ -59,7 +47,7 @@ const products = [
     ],
   },
   {
-    title: "GI Raceway",
+    title: "Gi Cable Tray",
     description: "Enclosed trunking system that protects and neatly routes wiring and cables.",
     image: "/products/gi-raceway.jpg",
     specifications: [
@@ -119,7 +107,7 @@ const products = [
     ],
   },
   {
-    title: "Hot Dip Galvanized Perforated Cable Tray",
+    title: "Hot Dip Galvanised Cable Tray",
     description: "Steel tray immersed in molten zinc for unmatched corrosion resistance.",
     image: "/products/hot-dip.webp",
     specifications: [
@@ -159,7 +147,7 @@ const products = [
     ],
   },
   {
-    title: "Powder Coated Raceway",
+    title: "Raceway Cable Tray",
     description: "Raceway trunking system finished with a durable, smooth powder coat.",
     image: "/products/powder-coated-raceway.jpg",
     specifications: [
@@ -239,7 +227,7 @@ const products = [
     ],
   },
   {
-    title: "Hot Dip Ladder Cable Tray",
+    title: "Cable Trays and Raceways",
     description: "Ladder tray protected with a uniform hot dip galvanized coating.",
     image: "/products/hot-dip-ladder.jpg",
     specifications: [
@@ -262,19 +250,6 @@ const products = [
 
 const Products = () => {
   const [viewMode, setViewMode] = useState<Record<number, "specifications" | "properties">>({});
-  const [selectedProduct, setSelectedProduct] = useState<(typeof products)[0] | null>(null);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const { register, handleSubmit, reset, setValue, formState: { errors } } = useForm<QuoteFormData>({
-    resolver: zodResolver(quoteSchema),
-  });
-
-  useEffect(() => {
-    if (selectedProduct) {
-      setValue("productName", selectedProduct.title);
-    }
-  }, [selectedProduct, setValue]);
-
   const toggleViewMode = (index: number) => {
     setViewMode((prev) => ({
       ...prev,
@@ -282,31 +257,16 @@ const Products = () => {
     }));
   };
 
-  const onSubmit = async (data: QuoteFormData) => {
-    setIsSubmitting(true);
-    try {
-      // Simulate form submission
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      alert("Thank you! Your inquiry has been sent successfully.");
-      reset();
-      setSelectedProduct(null);
-    } catch {
-      alert("Failed to send inquiry. Please try again.");
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
   return (
     <section id="products" className="py-20 bg-[#f8fafc]">
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            Our <span className="text-[#FB923C]">Products</span>
-          </h2>
-          <p className="text-lg text-gray-500 max-w-2xl mx-auto">
-            High-quality cable trays and raceways designed for reliable cable management and fast installation
-          </p>
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">
+            Cable Tray <span className="text-[#FB923C]">Products</span>
+          </h1>
+          <div className="text-lg text-gray-500 max-w-2xl mx-auto">
+            High-quality <h1 className="inline">Cable Trays and Raceways</h1> designed for reliable cable management and fast installation
+          </div>
         </div>
 
         <motion.div
@@ -346,7 +306,7 @@ const Products = () => {
                 </div>
 
                 <div className="p-4">
-                  <h3 className="text-lg font-bold text-[#045AA2] mb-1">{product.title}</h3>
+                  <h1 className="text-lg font-bold text-[#045AA2] mb-1">{product.title}</h1>
                   <p className="text-sm text-gray-600 mb-3">{product.description}</p>
                 </div>
 
@@ -381,12 +341,7 @@ const Products = () => {
                   </button>
 
                   <div className="mt-auto flex gap-2 pb-4">
-                    <button
-                      onClick={() => setSelectedProduct(product)}
-                      className="px-4 py-2 border border-[#045AA2] text-[#045AA2] rounded-lg text-sm font-medium hover:bg-[#045AA2] hover:text-white transition-colors"
-                    >
-                      Get Quote
-                    </button>
+
                     <a
                       href="tel:+917836870201"
                       className="flex-1 flex items-center justify-center gap-1 bg-[#EF7F1A] hover:bg-[#045AA2] text-white rounded-lg text-sm font-medium py-2 transition-colors"
@@ -401,91 +356,7 @@ const Products = () => {
         </motion.div>
       </div>
 
-      {/* Quote Modal */}
-      <AnimatePresence>
-        {selectedProduct && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4"
-          >
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="bg-white rounded-lg max-w-lg w-full shadow-xl relative p-6 max-h-[90vh] overflow-y-auto"
-            >
-              <button
-                onClick={() => setSelectedProduct(null)}
-                className="absolute top-4 right-4 text-gray-500 hover:text-black"
-              >
-                <X className="h-5 w-5" />
-              </button>
 
-              <div className="relative w-full h-40 hidden md:block rounded-lg overflow-hidden mb-4">
-                <Image
-                  src={selectedProduct.image}
-                  alt={selectedProduct.title}
-                  fill
-                  className="object-cover"
-                  unoptimized
-                />
-              </div>
-              <h3 className="text-xl md:text-2xl font-bold mb-2">{selectedProduct.title}</h3>
-              <p className="text-gray-500 mb-4">{selectedProduct.description}</p>
-
-              <form onSubmit={handleSubmit(onSubmit)} className="space-y-3">
-                <div className="grid md:grid-cols-2 gap-3">
-                  <div>
-                    <label className="text-sm font-medium text-gray-700">Name</label>
-                    <input {...register("name")} className="w-full mt-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#045AA2] focus:border-transparent outline-none" />
-                    {errors.name && <p className="text-red-500 text-sm">{errors.name.message}</p>}
-                  </div>
-                  <div>
-                    <label className="text-sm font-medium text-gray-700">Phone</label>
-                    <input {...register("phone")} className="w-full mt-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#045AA2] focus:border-transparent outline-none" />
-                    {errors.phone && <p className="text-red-500 text-sm">{errors.phone.message}</p>}
-                  </div>
-                </div>
-                <div className="grid md:grid-cols-2 gap-3">
-                  <div>
-                    <label className="text-sm font-medium text-gray-700">Email</label>
-                    <input {...register("email")} type="email" className="w-full mt-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#045AA2] focus:border-transparent outline-none" />
-                    {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
-                  </div>
-                  <div>
-                    <label className="text-sm font-medium text-gray-700">Product</label>
-                    <input {...register("productName")} readOnly className="w-full mt-1 px-3 py-2 border border-gray-300 rounded-lg bg-gray-100" />
-                  </div>
-                </div>
-                <div>
-                  <label className="text-sm font-medium text-gray-700">Message</label>
-                  <textarea {...register("message")} className="w-full mt-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#045AA2] focus:border-transparent outline-none min-h-[100px]" />
-                  {errors.message && <p className="text-red-500 text-sm">{errors.message.message}</p>}
-                </div>
-                <div className="flex gap-3">
-                  <button type="submit" disabled={isSubmitting} className="flex-1 py-2 bg-[#FB923C] hover:bg-[#EF7F1A] text-white rounded-lg font-medium transition-colors disabled:opacity-50">
-                    {isSubmitting ? "Sending..." : "Send Inquiry"}
-                  </button>
-                  <a
-                    className="flex-1 bg-green-500 hover:bg-green-600 text-white rounded-lg flex items-center justify-center gap-2 px-4 py-2 font-medium transition-colors"
-                    href={`https://wa.me/917836870201?text=${encodeURIComponent(`Hello, I am interested in ${selectedProduct?.title ?? ""}`)}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
-                      <path d="M12 2C6.48 2 2 6.19 2 11.24c0 2.07.64 3.98 1.74 5.57L2 22l5.41-1.7c1.53.84 3.29 1.31 5.18 1.31 5.52 0 10-4.19 10-9.24S17.52 2 12 2zm0 16.54c-1.57 0-3.03-.45-4.26-1.23l-.3-.18-3.21.99 1.05-3.12-.2-.32A7.15 7.15 0 0 1 4.84 11c0-3.91 3.41-7.09 7.6-7.09s7.6 3.18 7.6 7.09-3.41 7.09-7.6 7.09z" />
-                    </svg>
-                    WhatsApp
-                  </a>
-                </div>
-              </form>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </section>
   );
 };
