@@ -187,7 +187,7 @@ const products = [
     ],
   },
   {
-    title: "Powder Coated Perforated Cable Tray",
+    title: "Raceway Cable Tray",
     description: "Steel tray with perforations and a high-quality powder coated finish.",
     image: "/products/powder-coated-cable.jpg",
     specifications: [
